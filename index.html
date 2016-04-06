@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>中国行政区划代码</title>
+</head>
+<body>
+<strong>选择地区：</strong>
+<span id="Jarea"></span>
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<script src="jquery.jarea.js?ver=1.0.0"></script>
+<script>
+    $(function(){
+       $.Jarea({
+           selector:'#Jarea',
+           dataSource:'area.xml'
+       })
+    });
+</script>
+</body>
+</html>
