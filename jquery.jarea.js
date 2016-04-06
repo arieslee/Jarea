@@ -20,21 +20,40 @@
                 '<select name="'+options.countyName+'" id="'+options.countyId+'" class="'+options.class+'">'+options.selected.county+'</select>'
             ].join('');
             $that.html(output);
-            $.get(options.dataSource ,function(xml){
-                $datas = xml;
-                var p = $that.find('#'+options.provinceId);
-                p.append(get_province());
-                if(options.province !== false && options.city !== false){
-                    var c = $that.find('#'+options.cityId);
-                    c.html(get_city(options.province));
-                    if(options.county !== false){
-                        var cou = $that.find('#'+options.countyId);
-                        cou.html(get_county(options.province ,options.city));
-                    }
+            $.ajax({
+                type: "GET",
+                url: _format_data_source(),
+                cache: options.cache,
+                success: function(xml){
+                    $datas = xml;
+                    _init($that);
                 }
-                bind_change();
             });
         });
+        function _init($that){
+            var p = $that.find('#'+options.provinceId);
+            p.append(get_province());
+            if(options.province !== false && options.city !== false){
+                var c = $that.find('#'+options.cityId);
+                c.html(get_city(options.province));
+                if(options.county !== false){
+                    var cou = $that.find('#'+options.countyId);
+                    cou.html(get_county(options.province ,options.city));
+                }
+            }
+            bind_change();
+        }
+        function _format_data_source(){
+            var url = options.dataSource;
+            if(options.cache){
+                return url;
+            }
+            if(url.indexOf('?')!=-1){
+                return url+'&_t='+Math.random();
+            }else{
+                return url+'?_t='+Math.random();
+            }
+        }
         function get_province(){
             var output = '' ,name;
             $province = $($datas).find('province');
@@ -72,7 +91,6 @@
             $province.each(function(i, dom) {
                 pro = $(dom).attr('name');
                 if(pro === province){
-                    //$city = $(dom).find('city');
                     $city.each(function(c, dom) {
                         cit = $(dom).attr('name');
                         if (cit === city){
@@ -121,6 +139,7 @@
         countyName : 'county',
         countyId : 'county',
         join : '&nbsp;&nbsp;',
+        cache:true,
         selected:{
             province:'<option value="" selected="selected">----选择省份----</option>',
             city:'<option value="" selected="selected">----选择城市----</option>',
