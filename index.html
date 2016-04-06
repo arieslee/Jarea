@@ -5,16 +5,31 @@
     <title>中国行政区划代码</title>
 </head>
 <body>
-<strong>选择地区：</strong>
-<span id="Jarea"></span>
+<p>
+    <strong>选择地区：</strong>
+    <span id="Jarea"></span>
+</p>
+<p>
+    <strong>默认选择：</strong>
+    <span id="DefSelect"></span>
+</p>
 <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
 <script src="jquery.jarea.js?ver=1.0.0"></script>
 <script>
     $(function(){
-       $.Jarea({
-           selector:'#Jarea',
-           dataSource:'area.xml'
-       })
+        $('#Jarea').Jarea({
+            selector:'#Jarea',
+            dataSource:'area.xml'
+        });
+        $('#DefSelect').Jarea({
+            dataSource:'area.xml',
+            provinceId:'b_province',
+            province:'河北',
+            cityId:'b_city',
+            city:'秦皇岛市',
+            countyId:'b_county',
+            county:'海港区'
+        });
     });
 </script>
 </body>

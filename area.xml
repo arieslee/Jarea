@@ -52,9 +52,7 @@
 		<county name="桥东区" code="130103" />
 		<county name="桥西区" code="130104" />
 		<county name="新华区" code="130105" />
-		
 		<county name="裕华区" code="130108" />
-
 		<county name="井陉县" code="130121" />
 		<county name="正定县" code="130123" />
 		<county name="栾城县" code="130124" />
@@ -64,7 +62,6 @@
 		<county name="深泽县" code="130128" />
 		<county name="赞皇县" code="130129" />
 		<county name="无极县" code="130130" />
-
 		<county name="平山县" code="130131" />
 		<county name="元氏县" code="130132" />
 		<county name="赵县" code="130133" />
