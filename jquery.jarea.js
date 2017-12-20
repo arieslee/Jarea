@@ -15,9 +15,9 @@
         return this.each(function(){
             var $that = $(this);
             var output = [
-                '<select name="'+options.provinceName+'" id="'+options.provinceId+'" class="'+options.class+'">'+options.selected.province+'</select>'+options.join,
-                '<select name="'+options.cityName+'" id="'+options.cityId+'" class="'+options.class+'">'+options.selected.city+'</select>'+options.join,
-                '<select name="'+options.countyName+'" id="'+options.countyId+'" class="'+options.class+'">'+options.selected.county+'</select>'
+                '<select name="'+options.provinceName+'" id="'+options.provinceId+'"'+options.attr.province+' class="'+options.class+'">'+options.selected.province+'</select>'+options.join,
+                '<select name="'+options.cityName+'" id="'+options.cityId+'"'+options.attr.city+' class="'+options.class+'">'+options.selected.city+'</select>'+options.join,
+                '<select name="'+options.countyName+'" id="'+options.countyId+'"'+options.attr.county+' class="'+options.class+'">'+options.selected.county+'</select>'
             ].join('');
             $that.html(output);
             $.ajax({
@@ -144,6 +144,11 @@
             province:'<option value="" selected="selected">----选择省份----</option>',
             city:'<option value="" selected="selected">----选择城市----</option>',
             county:'<option value="" selected="selected">----选择地区----</option>'
+        },
+        attr:{
+            province:null,
+            city:null,
+            county:null
         }
     };
 })(jQuery);
